@@ -8,9 +8,10 @@ using EF7TeamMigrations;
 namespace EF7TeamMigrations.Migrations
 {
     [DbContext(typeof(MusicContext))]
-    partial class MusicContextModelSnapshot : ModelSnapshot
+    [Migration("20160504191023_CreateSong")]
+    partial class CreateSong
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
             modelBuilder
                 .HasAnnotation("ProductVersion", "7.0.0-rc1-16348")
@@ -24,8 +25,6 @@ namespace EF7TeamMigrations.Migrations
                     b.Property<int>("ArtistId");
 
                     b.Property<string>("Name");
-
-                    b.Property<int>("RecordLabelId");
 
                     b.HasKey("AlbumId");
                 });
@@ -52,23 +51,11 @@ namespace EF7TeamMigrations.Migrations
                     b.HasKey("SongId");
                 });
 
-            modelBuilder.Entity("EF7TeamMigrations.Models.RecordLabel", b =>
-                {
-                    b.Property<int>("RecordLabelId")
-                        .ValueGeneratedOnAdd();
-
-                    b.HasKey("RecordLabelId");
-                });
-
             modelBuilder.Entity("EF7TeamMigrations.Models.Album", b =>
                 {
                     b.HasOne("EF7TeamMigrations.Models.Artist")
                         .WithMany()
                         .HasForeignKey("ArtistId");
-
-                    b.HasOne("EF7TeamMigrations.Models.RecordLabel")
-                        .WithMany()
-                        .HasForeignKey("RecordLabelId");
                 });
 
             modelBuilder.Entity("EF7TeamMigrations.Models.Song", b =>

@@ -14,5 +14,6 @@ namespace EF7TeamMigrations.Models
         public int ArtistId { get; set; }
         public RecordLabel RecordLabel { get; set; }
         public int RecordLabelId { get; set; }
+        public List<Song> Songs {get;set;}
     }
 }
