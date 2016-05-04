@@ -6,12 +6,10 @@ using System.Threading.Tasks;
 
 namespace EF7TeamMigrations.Models
 {
-    public class Album
+    public class Song
     {
+        public int SongId { get; set; }
+        public Album Album { get; set; }
         public int AlbumId { get; set; }
-        public string Name { get; set; }
-        public Artist Artist { get; set; }
-        public int ArtistId { get; set; }
-        public List<Song> Songs {get;set;}
     }
 }

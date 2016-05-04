@@ -1,0 +1,53 @@
+using System;
+using System.Collections.Generic;
+using Microsoft.Data.Entity.Migrations;
+using Microsoft.Data.Entity.Metadata;
+
+namespace EF7TeamMigrations.Migrations
+{
+    public partial class CreateSong : Migration
+    {
+        protected override void Up(MigrationBuilder migrationBuilder)
+        {
+            migrationBuilder.DropForeignKey(name: "FK_Album_Artist_ArtistId", table: "Album");
+            migrationBuilder.CreateTable(
+                name: "Song",
+                columns: table => new
+                {
+                    SongId = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    AlbumId = table.Column<int>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Song", x => x.SongId);
+                    table.ForeignKey(
+                        name: "FK_Song_Album_AlbumId",
+                        column: x => x.AlbumId,
+                        principalTable: "Album",
+                        principalColumn: "AlbumId",
+                        onDelete: ReferentialAction.Cascade);
+                });
+            migrationBuilder.AddForeignKey(
+                name: "FK_Album_Artist_ArtistId",
+                table: "Album",
+                column: "ArtistId",
+                principalTable: "Artist",
+                principalColumn: "ArtistId",
+                onDelete: ReferentialAction.Cascade);
+        }
+
+        protected override void Down(MigrationBuilder migrationBuilder)
+        {
+            migrationBuilder.DropForeignKey(name: "FK_Album_Artist_ArtistId", table: "Album");
+            migrationBuilder.DropTable("Song");
+            migrationBuilder.AddForeignKey(
+                name: "FK_Album_Artist_ArtistId",
+                table: "Album",
+                column: "ArtistId",
+                principalTable: "Artist",
+                principalColumn: "ArtistId",
+                onDelete: ReferentialAction.Restrict);
+        }
+    }
+}

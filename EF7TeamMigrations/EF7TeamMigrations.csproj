@@ -130,9 +130,14 @@
     <Compile Include="Migrations\20160504173938_InitialMigration.designer.cs">
       <DependentUpon>20160504173938_InitialMigration.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\20160504191023_CreateSong.cs" />
+    <Compile Include="Migrations\20160504191023_CreateSong.designer.cs">
+      <DependentUpon>20160504191023_CreateSong.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\MusicContextModelSnapshot.cs" />
     <Compile Include="Models\Artist.cs" />
     <Compile Include="Models\Album.cs" />
+    <Compile Include="Models\Song.cs" />
     <Compile Include="MusicContext.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
