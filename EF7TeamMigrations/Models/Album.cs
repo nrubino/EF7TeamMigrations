@@ -12,5 +12,7 @@ namespace EF7TeamMigrations.Models
         public string Name { get; set; }
         public Artist Artist { get; set; }
         public int ArtistId { get; set; }
+        public RecordLabel RecordLabel { get; set; }
+        public int RecordLabelId { get; set; }
     }
 }
